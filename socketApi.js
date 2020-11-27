@@ -7,9 +7,11 @@ socketApi.io = io;
 
 io.on("connection", function (socket) {
   socket.on("add highlight", function (data) {
-    console.log("alolo");
+    console.log("someone");
     console.log(data);
-    io.emit("receive", data);
+    const { id, title, count } = data;
+    let newCount = count + 1;
+    io.emit("receive", { id, title, newCount });
   });
 });
 
